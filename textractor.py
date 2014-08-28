@@ -61,8 +61,8 @@ def extract(html, element_filters=None, remove_elements=None, element_groupers=N
     soup = BeautifulSoup(html)
 
     # Remove script tags and anything else specified in remove_elements
-    for to_remove in remove_elements + [ElementFilter(tag_name='script')]:
-        [s.extract() for s in soup(to_remove)]
+    remove_elements = (remove_elements or []) + [ElementFilter(tag_name='script')]
+    [s.extract() for s in ElementFilter.find_many_in_soup(soup, remove_elements)]
 
     # If specific elements in the html were specified in element_filters, use those. Fall back to using the whole body
     element_filters = element_filters or [ElementFilter(tag_name='body')]
