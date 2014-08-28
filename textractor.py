@@ -110,9 +110,11 @@ def extract(html, element_filters=None, remove_elements=None, element_groupers=N
                 element_groups[last_group_element] = current_group
 
     for group in element_groups:
-        stripped_texts = [remove_whitespace(text) for text in element_groups[group]]
         if join_texts:
-            stripped_texts = join_texts_with.join(stripped_texts)
+            stripped_texts = remove_whitespace(join_texts_with.join(element_groups[group]))
+        else:
+            stripped_texts = [remove_whitespace(text) for text in element_groups[group]]
+
         element_groups[group] = stripped_texts
 
     return element_groups
