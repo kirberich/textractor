@@ -14,7 +14,7 @@ class ElementFilter(object):
         self.attrs = attrs
 
     def find_in_soup(self, soup):
-        return soup.findAll(self.tag_name, attrs=self.attrs)
+        return soup.findAll(self.tag_name, attrs=self.attrs or {})
 
     @classmethod
     def find_many_in_soup(cls, soup, filters):
