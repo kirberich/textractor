@@ -58,6 +58,10 @@ def extract(html, element_filters=None, remove_elements=None, element_groupers=N
         join_texts_with defines how strings should be joined together (defaults to \n)
 
     """
+    # DIRTY HACK
+    # BeautifulSoup does a completely useless check on short markup to see if it's actually a filename, to protect against "beginner problems"
+    # This fails on appengine if the markup contains unicode. So we pad the string to avoid that check.
+    html = html.ljust(257)
     soup = BeautifulSoup(html)
 
     # Remove script tags and anything else specified in remove_elements
