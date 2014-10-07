@@ -25,7 +25,8 @@ if __name__ == '__main__':
 
     filters = [ElementFilter(tag_name='main')]
     groupers = [ElementFilter(tag_name="main"), ElementFilter(attrs={'itemprop':'blogPost'})]
-    for element, texts in extract(sample_text, element_filters=filters, remove_elements=['nav'], element_groupers=groupers).items():
+    remove = [ElementFilter(tag_name='nav')]
+    for element, texts in extract(sample_text, element_filters=filters, remove_elements=remove, element_groupers=groupers).items():
         print element.name
         print texts
         print ""
