@@ -83,6 +83,7 @@ def extract(html, element_filters=None, remove_elements=None, element_groupers=N
 
     for element in elements:
         last_block_element = element
+        last_group_element = None
 
         for current in [element] + list(element.descendants):
 
