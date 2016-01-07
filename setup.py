@@ -11,6 +11,7 @@ setup(
     zip_safe=False,
     install_requires=[
         'six',
-        'beautifulsoup4'
+        'beautifulsoup4',
+        'lxml'
     ]
 )
