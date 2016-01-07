@@ -1,4 +1,5 @@
 import re
+import six
 from collections import OrderedDict
 
 from bs4 import BeautifulSoup
@@ -32,7 +33,7 @@ def remove_whitespace(text):
     text = re.sub(r' +', ' ', text)
 
     text = re.sub(r"\t+", "\t", text)
-    return unicode(text).strip()
+    return six.text_type(text).strip()
 
 
 def extract(html, element_filters=None, remove_elements=None, element_groupers=None, join_texts=False, join_texts_with="\n"):
